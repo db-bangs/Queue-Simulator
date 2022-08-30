@@ -3,8 +3,10 @@ title: "Call Centre Queue Simulator"
 author: "Donovan Bangs"
 date: "2022-08-30"
 output:
+  pdf_document:
+    toc: no
   html_document:
-    toc: true
+    toc: yes
     theme: united
 ---
 
@@ -14,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Background
 
-This notebook details the creation of simulated call centre logs over the course of one year. For this dataset we are imagining a business whose lines are open from 8:00am to 6:00pm, Monday to Friday. Four agents are on duty at any given time and each call takes an average of 5 minutes to resolve.
+This notebook sets up a hypothetical call centre analysis with simulated data. Imagine a business whose lines are open from 8:00am to 6:00pm, Monday to Friday. Four agents are on duty at any given time and each call takes an average of 5 minutes to resolve.
 
 The call centre manager is required to meet a performance target: **90% of calls must be answered within 1 minute**. Lately, the performance has slipped. As the data analytics expert, you have been brought in to analyze their performance and make recommendations to return the centre back to its target.
 
@@ -92,11 +94,8 @@ df <-
   df %>%
   mutate(month_coef = monthnum / 10,
          weeknum_coef = weeknum / 35,
-         weekday_coef = weekday / 100)
-
-df <-
-  df %>%
-  mutate(total_coef = month_coef  * (1 + weeknum_coef)  + weekday_coef)
+         weekday_coef = weekday / 100,
+         total_coef = month_coef  * (1 + weeknum_coef)  + weekday_coef)
 
 # "Jitter" the coefficients - adds stochasticity to demand
 for(i in 1:nrow(df)){
