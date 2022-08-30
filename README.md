@@ -1,4 +1,4 @@
-# Queue-Simulator
+# Call Centre Queue Simulator
 A simulated call centre dataset and notebook, designed to be used as a classroom / tutorial dataset for Business and Operations Analytics.
 
 This notebook details the creation of simulated call centre logs over the course of one year. For this dataset we are imagining a business whose lines are open from 8:00am to 6:00pm, Monday to Friday. Four agents are on duty at any given time and each call takes an average of 5 minutes to resolve.
